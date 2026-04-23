@@ -1,138 +1,144 @@
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daily Line | Official Website</title>
-  <meta name="description" content="Daily Line is a journaling app for warm daily reflection, quotes, calendar tracking, reminders, statistics, and premium features." />
+  <meta name="description" content="Daily Line is a warm daily journaling app with daily thoughts, archive, statistics, reminders, themes, backup, export, and multilingual support." />
   <style>
     :root{
       --bg:#f6f6fb;
-      --card:#ffffff;
-      --text:#4c4f63;
-      --muted:#8f94aa;
-      --line:#e7e9f3;
-      --blue:#a9bfe9;
-      --blue-deep:#8aa7df;
-      --shadow:0 16px 40px rgba(109, 123, 164, 0.12);
-      --radius:28px;
-      --max:1160px;
+      --card:#ffffffcc;
+      --text:#4b4f67;
+      --muted:#8a90ab;
+      --line:#e8eaf3;
+      --blue:#a8c0ec;
+      --blue-deep:#89a8e2;
+      --shadow:0 16px 40px rgba(111, 124, 165, 0.10);
+      --radius:30px;
+      --max:1180px;
     }
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Segoe UI",sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Apple SD Gothic Neo","Pretendard","Segoe UI",sans-serif;
       color:var(--text);
-      background:linear-gradient(180deg,#f8f8fc 0%, #f2f3fa 100%);
-      line-height:1.7;
+      background:linear-gradient(180deg,#f7f7fb 0%,#f2f3fa 100%);
+      line-height:1.65;
     }
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    img{display:block;max-width:100%}
     .container{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
     .nav{
-      position:sticky; top:0; z-index:100;
-      backdrop-filter: blur(14px);
-      background:rgba(248,248,252,.86);
-      border-bottom:1px solid rgba(231,233,243,.8);
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(18px);
+      background:rgba(247,247,251,.84);
+      border-bottom:1px solid rgba(232,234,243,.92);
     }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:800; font-size:1.25rem; letter-spacing:-0.02em;}
-    .logo{
-      width:42px; height:42px; border-radius:14px;
-      background:linear-gradient(135deg,#d8e5ff,#f6dce3);
-      display:grid; place-items:center; box-shadow:var(--shadow); font-size:1.2rem;
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      min-height:92px; gap:20px;
     }
-    .nav-links{display:flex; gap:24px; align-items:center; color:var(--muted); font-weight:700}
-    .button{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:14px 20px; border-radius:18px; font-weight:800;
-      border:1px solid var(--line); background:var(--card);
-      box-shadow:0 10px 24px rgba(109,123,164,.08);
+    .brand{display:flex; align-items:center; gap:14px; font-size:1.15rem; font-weight:800; letter-spacing:-.02em}
+    .brand-mark{
+      width:44px;height:44px;border-radius:16px; display:grid; place-items:center;
+      background:linear-gradient(135deg,#fde8f1,#f5f1ff); box-shadow:var(--shadow); color:#f5c44d;
+      font-size:1rem;
     }
-    .button.primary{background:linear-gradient(135deg,#b8cbef,#99b6ea); color:#fff; border:none;}
-    .hero{padding:64px 0 40px}
-    .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:34px; align-items:center;}
+    .nav-links{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .nav-links a{
+      padding:12px 16px; border-radius:16px; color:var(--muted); font-weight:700;
+    }
+    .nav-links a:hover{background:#fff; color:var(--text)}
+    .nav-links .cta{
+      padding:14px 22px; background:#fff; border:1px solid var(--line); color:var(--text); box-shadow:var(--shadow)
+    }
+    .hero{padding:58px 0 34px}
+    .hero-grid{display:grid; grid-template-columns:1.02fr .98fr; gap:38px; align-items:center;}
     .eyebrow{
-      display:inline-flex; gap:8px; align-items:center; padding:10px 14px;
-      background:rgba(255,255,255,.8); border:1px solid var(--line);
-      border-radius:999px; color:var(--blue-deep); font-weight:800; font-size:.95rem;
-      box-shadow:0 10px 22px rgba(109,123,164,.06);
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 16px; border-radius:999px; background:#fff; border:1px solid var(--line);
+      color:var(--blue-deep); font-weight:800; box-shadow:var(--shadow); font-size:.95rem;
     }
-    h1{margin:18px 0 16px; font-size:clamp(2.5rem, 5vw, 4.6rem); line-height:1.06; letter-spacing:-0.04em;}
-    .lead{font-size:1.08rem; color:var(--muted); max-width:680px;}
-    .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px}
-    .hero-phone{
-      position:relative; padding:22px; border-radius:36px; background:rgba(255,255,255,.66);
-      border:1px solid rgba(231,233,243,.9); box-shadow:var(--shadow);
+    h1{
+      margin:18px 0 16px; font-size:clamp(2.8rem,6vw,4.7rem); line-height:1.04; letter-spacing:-.05em;
     }
-    .hero-phone img{border-radius:26px; box-shadow:0 20px 50px rgba(86,101,140,.16);}
-    section{padding:34px 0}
-    .section-head{display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:18px;}
-    .section-head h2{margin:0; font-size:clamp(1.7rem, 2vw, 2.5rem); letter-spacing:-0.03em;}
-    .section-head p{margin:6px 0 0; color:var(--muted)}
-    .cards{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;}
-    .card,.shot,.policy-box,.contact,.lang-card{
-      background:rgba(255,255,255,.9); border:1px solid var(--line);
-      border-radius:var(--radius); box-shadow:var(--shadow);
+    .hero p{margin:0; color:var(--muted); font-size:1.05rem; max-width:640px;}
+    .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:28px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:16px 22px; border-radius:18px; font-weight:800; border:1px solid var(--line);
+      background:#fff; box-shadow:var(--shadow);
     }
-    .card{padding:24px;}
-    .icon{
-      width:56px;height:56px;border-radius:18px;display:grid;place-items:center;
-      font-size:1.35rem;margin-bottom:14px;background:linear-gradient(135deg,#edf3ff,#f7f1f7); color:var(--blue-deep);
+    .btn.primary{background:linear-gradient(135deg,#b9cdf0,#9cb8eb); color:#fff; border:none;}
+    .phone-shell{
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(232,234,243,.95);
+      border-radius:34px; padding:18px; box-shadow:var(--shadow);
     }
-    .card h3{margin:0 0 8px; font-size:1.2rem}
-    .card p{margin:0; color:var(--muted)}
-    .showcase{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-    .shot{padding:18px;}
-    .shot .meta{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:2px 4px 14px;}
-    .tag{
-      display:inline-flex; padding:8px 12px; border-radius:999px; font-size:.9rem; font-weight:800;
-      background:#f4f6fd; color:var(--blue-deep); border:1px solid var(--line);
+    .phone-shell img{border-radius:26px}
+    section{padding:30px 0}
+    .section-head{margin-bottom:18px}
+    .section-head h2{margin:0; font-size:clamp(1.8rem,2vw,2.7rem); letter-spacing:-.04em;}
+    .section-head p{margin:8px 0 0; color:var(--muted)}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .card{
+      background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
-    .shot h3{margin:0; font-size:1.08rem}
-    .shot p{margin:6px 0 0; color:var(--muted); font-size:.96rem}
-    .shot img{border-radius:22px}
-    .feature-list{display:grid; grid-template-columns:repeat(2, 1fr); gap:18px;}
-    .feature{
-      display:flex; gap:16px; align-items:flex-start; background:rgba(255,255,255,.88);
-      border:1px solid var(--line); border-radius:24px; padding:20px; box-shadow:var(--shadow);
-    }
-    .mini{
-      width:50px;height:50px;border-radius:16px;display:grid;place-items:center;
-      background:linear-gradient(135deg,#eef3ff,#eef8f6); color:var(--blue-deep); font-size:1.15rem; flex:0 0 auto;
-    }
-    .feature h3{margin:0 0 4px; font-size:1.06rem}
-    .feature p{margin:0; color:var(--muted)}
-    .lang-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:18px;}
-    .lang-card{padding:24px;}
+    .info-card{padding:24px}
+    .info-card h3{margin:0 0 8px; font-size:1.14rem}
+    .info-card p{margin:0; color:var(--muted)}
+    .lang-card{padding:24px}
     .lang-card h3{margin:0 0 10px; font-size:1.15rem}
     .lang-card p{margin:0; color:var(--muted)}
-    .policy{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-    .policy-box{padding:28px;}
-    .policy-list{display:grid; gap:14px; margin-top:18px;}
-    .policy-item{
-      display:flex; justify-content:space-between; align-items:center; gap:16px;
-      background:#f9faff; border:1px solid var(--line); border-radius:20px; padding:16px 18px; font-weight:800;
+    .shot{padding:18px}
+    .shot-head{display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:14px}
+    .shot-head h3{margin:0; font-size:1.08rem}
+    .shot-head p{margin:4px 0 0; color:var(--muted); font-size:.96rem}
+    .tag{
+      flex:0 0 auto; padding:8px 12px; border-radius:999px; background:#f5f7fe;
+      border:1px solid var(--line); color:var(--blue-deep); font-size:.88rem; font-weight:800;
     }
-    .small{font-size:.94rem; color:var(--muted)}
-    .contact{text-align:center; padding:36px;}
-    .footer{padding:28px 0 50px; color:var(--muted); font-size:.95rem;}
-    .footer-grid{
-      display:flex; justify-content:space-between; gap:18px; align-items:center; flex-wrap:wrap;
-      border-top:1px solid var(--line); padding-top:24px;
+    .shot img{border-radius:24px}
+    .feature{
+      display:flex; gap:16px; align-items:flex-start; padding:22px;
+      background:var(--card); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow);
+    }
+    .icon{
+      width:52px;height:52px; border-radius:18px; display:grid; place-items:center;
+      background:linear-gradient(135deg,#edf3ff,#f8f1f8); color:var(--blue-deep); font-size:1.2rem; flex:0 0 auto;
+    }
+    .feature h3{margin:0 0 6px; font-size:1.08rem}
+    .feature p{margin:0; color:var(--muted)}
+    .policy-wrap{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .policy-box{padding:28px}
+    .policy-box h3{margin:0 0 8px}
+    .small{color:var(--muted); font-size:.95rem}
+    .policy-links{display:grid; gap:14px; margin-top:18px}
+    .policy-link{
+      display:flex; justify-content:space-between; align-items:center; gap:16px;
+      background:#fafbff; border:1px solid var(--line); border-radius:20px; padding:16px 18px; font-weight:800;
+    }
+    .footer{padding:26px 0 46px; color:var(--muted); font-size:.95rem}
+    .footer-inner{
+      padding-top:24px; border-top:1px solid var(--line);
+      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
     }
     @media (max-width: 980px){
-      .hero-grid,.showcase,.policy,.cards,.feature-list,.lang-grid{grid-template-columns:1fr}
+      .hero-grid,.grid-2,.grid-3,.policy-wrap{grid-template-columns:1fr}
       .nav-links{display:none}
-      .hero{padding-top:32px}
+      .hero{padding-top:34px}
     }
     @media (max-width: 640px){
       .container{width:min(var(--max), calc(100% - 20px))}
-      h1{font-size:2.5rem}
+      h1{font-size:2.6rem}
+      .btn{width:100%}
       .hero-actions{flex-direction:column}
-      .button{width:100%}
-      .card,.policy-box,.contact,.lang-card{padding:20px}
+      .info-card,.lang-card,.policy-box{padding:20px}
       .shot{padding:14px}
     }
   </style>
@@ -140,13 +146,16 @@
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top"><span class="logo">✨</span><span>Daily Line</span></a>
+      <a class="brand" href="#top">
+        <span class="brand-mark">✨</span>
+        <span>Daily Line</span>
+      </a>
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#languages">Languages</a>
         <a href="#screens">Screens</a>
         <a href="#policy">Policy</a>
-        <a href="#contact" class="button">Contact</a>
+        <a href="#contact" class="cta">Contact</a>
       </nav>
     </div>
   </header>
@@ -157,18 +166,19 @@
         <div>
           <div class="eyebrow">Official app website for Apple review</div>
           <h1>Daily Line</h1>
-          <p class="lead">
-            Daily Line is a warm daily journaling app designed to help users reflect, record short thoughts,
-            build writing habits, and revisit personal moments through calendar and statistics features.
+          <p>
+            Daily Line is a warm daily journaling app designed to help users reflect,
+            record short thoughts, build writing habits, and revisit personal moments
+            through archive and statistics features.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#screens">View Screens</a>
-            <a class="button" href="privacy.html">Privacy Policy</a>
-            <a class="button" href="terms.html">Terms of Use</a>
+            <a class="btn primary" href="#screens">View Screens</a>
+            <a class="btn" href="privacy.html">Privacy Policy</a>
+            <a class="btn" href="terms.html">Terms of Use</a>
           </div>
         </div>
-        <div class="hero-phone">
-          <img src="home.jpg" alt="Daily Line home screen" />
+        <div class="phone-shell">
+          <img src="hero_home.png" alt="Daily Line home screen" />
         </div>
       </div>
     </section>
@@ -176,59 +186,52 @@
     <section id="about">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>App Overview</h2>
-            <p>Multilingual app introduction prepared for public website and Apple review.</p>
-          </div>
+          <h2>About the app</h2>
+          <p>A simple, calm, and customizable diary experience built for daily use.</p>
         </div>
-        <div class="lang-grid">
-          <div class="lang-card">
-            <h3>한국어</h3>
-            <p>Daily Line은 따뜻한 문장과 함께 하루를 기록하는 감성 다이어리 앱입니다. 오늘의 생각, 기록 달력, 통계, 알림, 백업, PDF 내보내기, 잠금 기능 등을 통해 사용자가 자신의 하루를 편안하게 남길 수 있도록 돕습니다.</p>
+        <div class="grid-3">
+          <div class="card info-card">
+            <h3>Write a little every day</h3>
+            <p>Daily Line lowers the pressure of journaling and helps users keep a steady writing habit with short entries and a warm interface.</p>
           </div>
-          <div class="lang-card">
-            <h3>English</h3>
-            <p>Daily Line is a gentle journaling app that helps users capture daily thoughts with warmth. It includes daily quotes, calendar-based history, writing statistics, reminders, backup, PDF export, and privacy lock features.</p>
+          <div class="card info-card">
+            <h3>See your habits clearly</h3>
+            <p>Users can review archive history, streaks, weekly activity, totals, and detailed analysis to understand their writing pattern.</p>
           </div>
-          <div class="lang-card">
-            <h3>Español</h3>
-            <p>Daily Line es una aplicación de diario pensada para registrar pensamientos y momentos cotidianos de una forma cálida y sencilla. Incluye frases diarias, calendario de registros, estadísticas, recordatorios, copia de seguridad y exportación en PDF.</p>
-          </div>
-          <div class="lang-card">
-            <h3>日本語</h3>
-            <p>Daily Lineは、毎日の思いや記録をやさしく残せる日記アプリです。今日のメッセージ、記録カレンダー、統計、通知、バックアップ、PDF書き出し、ロック機能などを備えています。</p>
-          </div>
-          <div class="lang-card">
-            <h3>Português (Brasil)</h3>
-            <p>Daily Line é um aplicativo de diário criado para registrar pensamentos e momentos do dia com leveza. Ele oferece frases diárias, calendário de registros, estatísticas, lembretes, backup, exportação em PDF e proteção por bloqueio.</p>
+          <div class="card info-card">
+            <h3>Make it personal</h3>
+            <p>The app includes reminders, themes, font settings, language settings, backup, export, and lock features for a more personal experience.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="languages">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>Core Features</h2>
-            <p>Key functionality visible in the uploaded app screens.</p>
-          </div>
+          <h2>Available in 5 languages</h2>
+          <p>App introduction is provided below in Korean, English, Japanese, neutral Spanish, and Brazilian Portuguese.</p>
         </div>
-        <div class="cards">
-          <div class="card">
-            <div class="icon">💬</div>
-            <h3>Daily Thought</h3>
-            <p>Users can read a daily message and choose between fixed-date mode and shuffle mode.</p>
+        <div class="grid-2">
+          <div class="card lang-card">
+            <h3>한국어</h3>
+            <p>Daily Line은 매일 글을 쓰는 습관을 자연스럽게 만들어주는 심플하고 감성적인 다이어리 앱입니다. 오늘의 생각, 기록 보관, 통계, 알림, 테마 변경, 백업, PDF 내보내기 기능을 통해 사용자가 자신의 하루를 편안하게 기록할 수 있도록 돕습니다.</p>
           </div>
-          <div class="card">
-            <div class="icon">🗓️</div>
-            <h3>Calendar History</h3>
-            <p>Entries can be reviewed by date through a simple monthly calendar interface.</p>
+          <div class="card lang-card">
+            <h3>English</h3>
+            <p>Daily Line is a simple and thoughtful diary app that helps users build a daily writing habit. It includes today’s thought, archive, statistics, reminders, themes, backup, and PDF export so users can keep their daily moments in one calm place.</p>
           </div>
-          <div class="card">
-            <div class="icon">📈</div>
-            <h3>Statistics & Badges</h3>
-            <p>The app visualizes streaks, monthly activity, totals, weekly activity, and badge progress.</p>
+          <div class="card lang-card">
+            <h3>日本語</h3>
+            <p>Daily Lineは、毎日の書く習慣をやさしく支えるシンプルな日記アプリです。今日のメッセージ、アーカイブ、統計、通知、テーマ変更、バックアップ、PDF書き出し機能を通して、日々の記録を心地よく残せます。</p>
+          </div>
+          <div class="card lang-card">
+            <h3>Español</h3>
+            <p>Daily Line es una aplicación de diario simple y agradable que ayuda a crear el hábito de escribir cada día. Incluye pensamiento del día, archivo, estadísticas, recordatorios, temas, copia de seguridad y exportación en PDF para guardar los momentos diarios de forma cómoda y clara.</p>
+          </div>
+          <div class="card lang-card">
+            <h3>Português (Brasil)</h3>
+            <p>Daily Line é um aplicativo de diário simples e acolhedor que ajuda você a criar o hábito de escrever todos os dias. Ele oferece pensamento do dia, arquivo, estatísticas, lembretes, temas, backup e exportação em PDF para guardar seus momentos com tranquilidade.</p>
           </div>
         </div>
       </div>
@@ -237,92 +240,89 @@
     <section id="screens">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>App Screens</h2>
-            <p>Representative screens from the current app build.</p>
-          </div>
+          <h2>App screens</h2>
+          <p>Each section below pairs a feature explanation with real in-app screenshots.</p>
         </div>
-        <div class="showcase">
-          <article class="shot">
-            <div class="meta"><div><h3>Home</h3><p>Daily quote and entry flow</p></div><span class="tag">Home</span></div>
-            <img src="home.jpg" alt="Daily Line home screen" />
+        <div class="grid-2">
+          <article class="card shot">
+            <div class="shot-head"><div><h3>Home and Today’s Thought</h3><p>The home screen highlights the daily quote and current streak in a soft, friendly layout.</p></div><span class="tag">Home</span></div>
+            <img src="hero_home.png" alt="Home screen" />
           </article>
-          <article class="shot">
-            <div class="meta"><div><h3>Calendar</h3><p>Monthly record overview</p></div><span class="tag">Calendar</span></div>
-            <img src="calendar.jpg" alt="Daily Line calendar screen" />
+          <article class="card shot">
+            <div class="shot-head"><div><h3>Archive calendar</h3><p>Users can review saved entries by date with a simple monthly archive calendar.</p></div><span class="tag">Archive</span></div>
+            <img src="archive_calendar.png" alt="Archive calendar screen" />
           </article>
-          <article class="shot">
-            <div class="meta"><div><h3>Statistics</h3><p>Main statistics and current badge</p></div><span class="tag">Stats</span></div>
-            <img src="stats_main.jpg" alt="Daily Line statistics screen" />
+          <article class="card shot">
+            <div class="shot-head"><div><h3>Archive list</h3><p>Entries can also be browsed as a chronological list grouped by year and month.</p></div><span class="tag">List</span></div>
+            <img src="archive_list.png" alt="Archive list screen" />
           </article>
-          <article class="shot">
-            <div class="meta"><div><h3>Detailed Analysis</h3><p>Streaks, counts, and weekly summary</p></div><span class="tag">Detail</span></div>
-            <img src="stats_detail.jpg" alt="Detailed analysis screen" />
+          <article class="card shot">
+            <div class="shot-head"><div><h3>Statistics overview</h3><p>The statistics dashboard shows streak, monthly activity, totals, badges, and weekly activity at a glance.</p></div><span class="tag">Stats</span></div>
+            <img src="stats_main.png" alt="Statistics overview screen" />
           </article>
-          <article class="shot">
-            <div class="meta"><div><h3>Settings</h3><p>Notifications, theme, backup, PDF export, app info</p></div><span class="tag">Settings</span></div>
-            <img src="settings_notifications.jpg" alt="Settings screen" />
+          <article class="card shot">
+            <div class="shot-head"><div><h3>Detailed analysis</h3><p>Users can see longest streak, total characters, average characters, most active month, and weekly average.</p></div><span class="tag">Analysis</span></div>
+            <img src="stats_detail.png" alt="Detailed analysis screen" />
           </article>
-          <article class="shot">
-            <div class="meta"><div><h3>App Information</h3><p>Terms, privacy, support and version area</p></div><span class="tag">Info</span></div>
-            <img src="settings_info.jpg" alt="App information screen" />
+          <article class="card shot">
+            <div class="shot-head"><div><h3>Theme and language settings</h3><p>Light mode, dark mode, system mode, language, and calendar settings are available.</p></div><span class="tag">Theme</span></div>
+            <img src="settings_theme.png" alt="Theme settings screen" />
+          </article>
+          <article class="card shot">
+            <div class="shot-head"><div><h3>Data and lock settings</h3><p>Cloud backup, PDF export, data deletion, lock, and font settings help users manage their content safely.</p></div><span class="tag">Data</span></div>
+            <img src="settings_data.png" alt="Data settings screen" />
+          </article>
+          <article class="card shot">
+            <div class="shot-head"><div><h3>Notifications and color themes</h3><p>Daily reminders, automatic navigation, reminder time, and color theme settings support daily habit building.</p></div><span class="tag">Reminder</span></div>
+            <img src="settings_notifications.png" alt="Notification settings screen" />
+          </article>
+          <article class="card shot">
+            <div class="shot-head"><div><h3>Quote and app settings</h3><p>Users can choose fixed or shuffle quote mode and review basic app settings on the same screen flow.</p></div><span class="tag">Quote</span></div>
+            <img src="settings_quote.png" alt="Quote settings screen" />
+          </article>
+          <article class="card shot">
+            <div class="shot-head"><div><h3>App information and policy access</h3><p>Version information, legal links, feedback, and support access are clearly exposed inside the app.</p></div><span class="tag">Info</span></div>
+            <img src="settings_info.png" alt="App info screen" />
           </article>
         </div>
       </div>
     </section>
 
-    <section id="features">
+    <section>
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>Feature Summary</h2>
-            <p>Functional summary aligned with the policy documents.</p>
-          </div>
+          <h2>Core features</h2>
+          <p>The app focuses on consistency, reflection, and user-controlled customization.</p>
         </div>
-        <div class="feature-list">
-          <div class="feature"><div class="mini">🔔</div><div><h3>Reminders</h3><p>Daily reminder settings allow users to receive prompts at a selected time.</p></div></div>
-          <div class="feature"><div class="mini">🎨</div><div><h3>Theme Customization</h3><p>Light mode, dark mode, system mode, and color themes are available.</p></div></div>
-          <div class="feature"><div class="mini">🔐</div><div><h3>Lock Protection</h3><p>PIN and biometric lock features help protect personal journal content.</p></div></div>
-          <div class="feature"><div class="mini">☁️</div><div><h3>Backup & Restore</h3><p>Cloud backup may be used through iCloud or Google Drive when enabled by the user.</p></div></div>
-          <div class="feature"><div class="mini">📄</div><div><h3>PDF Export</h3><p>Users can export journal content to a PDF file for their own record keeping.</p></div></div>
-          <div class="feature"><div class="mini">💎</div><div><h3>Premium Features</h3><p>Premium access may be purchased through the Apple App Store or Google Play Store.</p></div></div>
+        <div class="grid-2">
+          <div class="feature"><div class="icon">💭</div><div><h3>Today’s Thought</h3><p>Daily Line offers a short quote experience with fixed and shuffle modes to support a gentle writing routine.</p></div></div>
+          <div class="feature"><div class="icon">📚</div><div><h3>Archive</h3><p>Users can browse entries in both calendar and list formats to revisit earlier writing quickly.</p></div></div>
+          <div class="feature"><div class="icon">📊</div><div><h3>Statistics</h3><p>Overview cards, badge progress, weekly activity, and detailed analysis help users understand their journaling habit.</p></div></div>
+          <div class="feature"><div class="icon">🔔</div><div><h3>Reminders</h3><p>Daily reminders and optional automatic navigation make it easier to return to the app consistently.</p></div></div>
+          <div class="feature"><div class="icon">🎨</div><div><h3>Customization</h3><p>Theme, color, font, language, and calendar settings let users shape the app around their own preference.</p></div></div>
+          <div class="feature"><div class="icon">🔐</div><div><h3>Backup and protection</h3><p>Cloud backup, PDF export, and security lock options help users keep their diary content controlled and portable.</p></div></div>
         </div>
       </div>
     </section>
 
     <section id="policy">
-      <div class="container policy">
-        <div class="policy-box">
-          <h2 style="margin:0;">Policy Documents</h2>
-          <p class="small">Privacy Policy and Terms of Use are provided in Korean and English.</p>
-          <div class="policy-list">
-            <a class="policy-item" href="privacy.html"><span>Privacy Policy / 개인정보처리방침</span><span>Open</span></a>
-            <a class="policy-item" href="terms.html"><span>Terms of Use / 이용약관</span><span>Open</span></a>
+      <div class="container policy-wrap">
+        <div class="card policy-box">
+          <h3>Policy documents</h3>
+          <p class="small">Privacy Policy and Terms of Use are provided in Korean and English only.</p>
+          <div class="policy-links">
+            <a class="policy-link" href="privacy.html"><span>Privacy Policy / 개인정보처리방침</span><span>Open</span></a>
+            <a class="policy-link" href="terms.html"><span>Terms of Use / 이용약관</span><span>Open</span></a>
           </div>
         </div>
-        <div class="policy-box">
-          <h2 style="margin:0;">Company Information</h2>
-          <div class="policy-list">
-            <div class="policy-item"><span>App Name</span><span>Daily Line</span></div>
-            <div class="policy-item"><span>Operator</span><span>Daily Line Soft</span></div>
-            <div class="policy-item"><span>Contact</span><span>dailylinesoft@gmail.com</span></div>
-            <div class="policy-item"><span>Effective Date</span><span>2026-04-23</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact">
-          <h2 style="margin:0 0 10px; font-size:clamp(1.8rem,2.6vw,2.8rem);">Contact</h2>
-          <p style="max-width:760px; margin:0 auto; color:var(--muted);">
-            For support, policy inquiries, or Apple review verification, please contact Daily Line Soft.
-          </p>
-          <div class="policy-list" style="max-width:760px; margin:22px auto 0;">
-            <div class="policy-item"><span>Company</span><span>Daily Line Soft</span></div>
-            <div class="policy-item"><span>Email</span><span>dailylinesoft@gmail.com</span></div>
-            <div class="policy-item"><span>Policy Documents</span><span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span></div>
+        <div class="card policy-box" id="contact">
+          <h3>Contact</h3>
+          <p class="small">For support, legal inquiries, or Apple review verification, please use the contact below.</p>
+          <div class="policy-links">
+            <div class="policy-link"><span>App Name</span><span>Daily Line</span></div>
+            <div class="policy-link"><span>Operator</span><span>Daily Line Soft</span></div>
+            <div class="policy-link"><span>Email</span><span>dailylinesoft@gmail.com</span></div>
+            <div class="policy-link"><span>Effective Date</span><span>2026-04-23</span></div>
           </div>
         </div>
       </div>
@@ -330,7 +330,7 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
+    <div class="container footer-inner">
       <div><strong>Daily Line</strong> · Daily Line Soft</div>
       <div>© 2026 Daily Line Soft. All rights reserved.</div>
     </div>
