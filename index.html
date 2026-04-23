@@ -1,177 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Line Soft</title>
+    <title>Legal - Daily Line Soft</title>
     <style>
         :root {
             --primary-blue: #a0c4ff;
             --soft-pink: #ffd6e0;
             --soft-purple: #e2d1f9;
-            --text-main: #555;
-            --text-sub: #888;
             --bg-color: #f8f9fd;
+            --text-main: #333;
+            --text-sub: #666;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: var(--text-main);
-            background-color: var(--bg-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            line-height: 1.7; margin: 0; background-color: var(--bg-color); color: var(--text-main);
         }
 
+        /* 상단 네비게이션 */
         header {
-            width: 100%;
-            padding: 60px 0;
-            text-align: center;
-            background: white;
-            border-bottom: 1px solid #eee;
+            background: white; padding: 30px 20px; text-align: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100;
         }
-
-        .logo {
-            font-size: 2.2em;
-            font-weight: 800;
-            color: var(--text-main);
-            letter-spacing: -1px;
-            margin-bottom: 10px;
+        .logo { font-size: 1.8em; font-weight: 800; margin-bottom: 15px; color: #222; cursor: pointer; }
+        
+        .tab-nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
+        .tab-nav button {
+            padding: 10px 20px; border: none; background: none; font-size: 1em; font-weight: 600; cursor: pointer; color: var(--text-sub); border-bottom: 3px solid transparent;
         }
+        .tab-nav button.active { color: var(--primary-blue); border-bottom: 3px solid var(--primary-blue); }
 
-        .container {
-            max-width: 800px;
-            width: 90%;
-            padding: 40px 0;
+        .lang-nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .lang-nav a {
+            text-decoration: none; padding: 6px 14px; background: #f0f0f0; border-radius: 15px; color: #777; font-size: 0.85em; transition: 0.2s;
         }
+        .lang-nav a:hover { background: var(--soft-purple); color: #6d5da1; }
 
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.02);
-        }
+        .container { max-width: 850px; margin: 30px auto; padding: 0 20px; }
+        .content-card { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: none; }
+        .content-card.active { display: block; }
 
-        .lang-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            background-color: var(--soft-purple);
-            color: #6d5da1;
-        }
+        h1 { font-size: 1.6em; margin-bottom: 5px; }
+        h2 { font-size: 1.3em; margin-top: 35px; border-bottom: 2px solid var(--bg-color); padding-bottom: 8px; }
+        h3 { font-size: 1.05em; color: #444; }
+        .date { color: #999; font-size: 0.9em; margin-bottom: 25px; }
+        
+        section { margin-bottom: 60px; }
+        footer { text-align: center; padding: 40px; color: #bbb; font-size: 0.85em; }
 
-        h2 { font-size: 1.4em; margin-top: 0; color: #444; }
-        p { color: var(--text-sub); margin-bottom: 20px; }
-
-        .contact-btn {
-            display: inline-block;
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-
-        .contact-btn:hover { transform: translateY(-2px); }
-
-        .footer-links {
-            margin-top: 20px;
-            display: flex;
-            gap: 15px;
-        }
-
-        .footer-links a {
-            font-size: 0.85em;
-            color: var(--text-sub);
-            text-decoration: none;
-            padding: 5px 12px;
-            border: 1px solid #eee;
-            border-radius: 10px;
-        }
-
-        /* Responsive Mobile View */
-        @media (max-width: 600px) {
-            body { padding: 0; }
-            .card { padding: 20px; border-radius: 20px; }
-        }
+        @media (max-width: 600px) { .content-card { padding: 20px; } .tab-nav button { font-size: 0.9em; } }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">Daily Line</div>
-    <p>Simple & Beautiful record for your better days.</p>
+    <div class="logo" onclick="location.reload()">Daily Line Soft</div>
+    
+    <div class="tab-nav">
+        <button id="btn-privacy" class="active" onclick="showTab('privacy')">Privacy Policy</button>
+        <button id="btn-terms" onclick="showTab('terms')">Terms of Use</button>
+    </div>
+
+    <div class="lang-nav">
+        <a href="#ko">KO</a> <a href="#en">EN</a> <a href="#es">ES</a> <a href="#pt">PT</a> <a href="#ja">JA</a>
+    </div>
 </header>
 
 <div class="container">
-
-    <div class="card">
-        <span class="lang-badge">English</span>
-        <h2>Keep your daily line consistent</h2>
-        <p>Record your thoughts and visualize your growth with our minimalist diary app.</p>
-        <a href="mailto:dailylinesoft@gmail.com" class="contact-btn">Support Inquiry</a>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+    
+    <div id="tab-privacy" class="content-card active">
+        <section id="ko">
+            <h1>개인정보 처리방침 (KO)</h1>
+            <p class="date">시행일자: 2026년 4월 23일</p>
+            <p>DailyLine은 개인 기록과 회고를 돕는 일기 앱입니다...</p>
+            </section>
+        <hr>
+        <section id="en">
+            <h1>Privacy Policy (EN)</h1>
+            <p class="date">Effective Date: April 23, 2026</p>
+            </section>
         </div>
-    </div>
 
-    <div class="card">
-        <span class="lang-badge" style="background-color: var(--soft-pink); color: #b56b7d;">한국어</span>
-        <h2>당신의 일상을 선으로 잇다</h2>
-        <p>미니멀한 디자인의 일기 앱으로 오늘의 생각을 기록하고 습관을 시각화해보세요.</p>
-        <a href="mailto:dailylinesoft@gmail.com" class="contact-btn" style="background-color: #ffb7b2;">고객지원 문의</a>
-        <div class="footer-links">
-            <a href="#">개인정보 처리방침</a>
-            <a href="#">이용약관</a>
+    <div id="tab-terms" class="content-card">
+        <section id="ko-t">
+            <h1>이용약관 (KO)</h1>
+            <p class="date">시행일자: 2026년 4월 23일</p>
+            <p>본 이용약관은 DailyLine의 사용 조건을 정합니다...</p>
+            </section>
+        <hr>
+        <section id="en-t">
+            <h1>Terms of Use (EN)</h1>
+            <p class="date">Effective Date: April 23, 2026</p>
+            </section>
         </div>
-    </div>
-
-    <div class="card">
-        <span class="lang-badge">Português</span>
-        <h2>Mantenha sua linha diária constante</h2>
-        <p>Registre seus pensamentos e visualize seu crescimento com nosso aplicativo de diário minimalista.</p>
-        <a href="mailto:dailylinesoft@gmail.com" class="contact-btn">Suporte</a>
-        <div class="footer-links">
-            <a href="#">Política de Privacidade</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <span class="lang-badge" style="background-color: #caffbf; color: #5b8a51;">Español</span>
-        <h2>Mantén tu línea diaria constante</h2>
-        <p>Registra tus pensamientos y visualiza tu crecimiento con nuestra aplicación de diario minimalista.</p>
-        <a href="mailto:dailylinesoft@gmail.com" class="contact-btn" style="background-color: #9cdba6;">Soporte</a>
-        <div class="footer-links">
-            <a href="#">Política de privacidad</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <span class="lang-badge" style="background-color: #ffd6a5; color: #a67c52;">日本語</span>
-        <h2>毎日のラインを大切に</h2>
-        <p>ミニマルな日記アプリで、今日の考えを記録し、あなたの成長を可視化しましょう。</p>
-        <a href="mailto:dailylinesoft@gmail.com" class="contact-btn" style="background-color: #ffadad;">サポート</a>
-        <div class="footer-links">
-            <a href="#">プライバシーポリシー</a>
-        </div>
-    </div>
 
 </div>
 
-<footer style="margin-bottom: 50px; color: #bbb; font-size: 0.8em;">
-    &copy; 2026 Daily Line Soft. All rights reserved.
+<footer>
+    &copy; 2026 Daily Line Soft. All rights reserved.<br>
+    Contact: <a href="mailto:dailylinesoft@gmail.com" style="color:#bbb">dailylinesoft@gmail.com</a>
 </footer>
+
+<script>
+    function showTab(tabName) {
+        // 탭 콘텐츠 변경
+        document.querySelectorAll('.content-card').forEach(el => el.classList.remove('active'));
+        document.getElementById('tab-' + tabName).classList.add('active');
+        
+        // 버튼 활성화 스타일 변경
+        document.querySelectorAll('.tab-nav button').forEach(el => el.classList.remove('active'));
+        document.getElementById('btn-' + tabName).classList.add('active');
+        
+        window.scrollTo(0, 0);
+    }
+</script>
 
 </body>
 </html>
