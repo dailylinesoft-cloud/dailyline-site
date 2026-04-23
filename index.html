@@ -3,47 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DailyLine Soft - Official</title>
+    <title>DailyLine - Official Site</title>
     <style>
-        :root { --primary-blue: #a0c4ff; --soft-pink: #ffd6e0; --soft-purple: #e2d1f9; --bg-color: #f8f9fd; --text-main: #333; --text-sub: #666; }
+        :root { --primary-blue: #a0c4ff; --bg-color: #f8f9fd; --text-main: #333; --text-sub: #666; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.7; margin: 0; background-color: var(--bg-color); color: var(--text-main); }
-        header { background: white; padding: 25px 20px; text-align: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 1.6em; font-weight: 800; color: #222; text-decoration: none; display: block; margin-bottom: 15px; }
-        .tab-nav { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
-        .tab-nav button { padding: 8px 15px; border: none; background: #eee; border-radius: 10px; font-size: 0.9em; font-weight: 600; cursor: pointer; color: var(--text-sub); transition: 0.2s; }
+        header { background: white; padding: 30px 20px; text-align: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.8em; font-weight: 800; color: #222; text-decoration: none; display: block; margin-bottom: 20px; }
+        .flag-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .flag-btn { font-size: 2em; cursor: pointer; filter: grayscale(100%); transition: 0.3s; border: none; background: none; padding: 5px; }
+        .flag-btn:hover, .flag-btn.active { filter: grayscale(0%); transform: scale(1.1); }
+        .tab-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
+        .tab-nav button { padding: 10px 18px; border: none; background: #fff; border-radius: 12px; font-weight: 600; cursor: pointer; color: var(--text-sub); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .tab-nav button.active { background: var(--primary-blue); color: white; }
-        .lang-nav { font-size: 0.85em; color: #999; margin-top: 10px; }
-        .lang-nav span { cursor: pointer; color: var(--primary-blue); margin: 0 5px; font-weight: bold; }
-        .container { max-width: 850px; margin: 30px auto; padding: 0 20px; }
-        .content-card { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); min-height: 500px; }
-        
-        /* 앱 소개 섹션 스타일 */
-        .app-hero { text-align: center; padding: 20px 0; }
-        .app-hero h1 { color: var(--primary-blue); font-size: 2.5em; margin: 0; }
-        .app-hero p { font-size: 1.2em; color: var(--text-sub); margin-top: 10px; }
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; text-align: left; }
-        .feature-item { background: var(--bg-color); padding: 20px; border-radius: 15px; }
-        .feature-item h3 { margin-top: 0; color: var(--primary-blue); }
-
-        h2 { font-size: 1.4em; margin-top: 40px; border-bottom: 2px solid var(--bg-color); padding-bottom: 10px; }
-        .date { color: #999; font-size: 0.85em; margin-bottom: 20px; display: block; }
-        section { display: none; white-space: pre-line; word-break: break-all; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .content-card { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { color: var(--primary-blue); font-size: 2.2em; margin: 10px 0; }
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; text-align: left; }
+        .feature-box { background: var(--bg-color); padding: 20px; border-radius: 15px; border-left: 4px solid var(--primary-blue); }
+        h2 { font-size: 1.4em; border-bottom: 2px solid var(--bg-color); padding-bottom: 10px; margin-top: 40px; color: #444; }
+        .date { color: #999; font-size: 0.85em; display: block; margin-bottom: 20px; }
+        section { display: none; white-space: pre-wrap; word-break: break-all; }
         section.active { display: block; }
-        footer { text-align: center; padding: 50px 20px; color: #bbb; font-size: 0.85em; }
+        footer { text-align: center; padding: 60px 20px; color: #ccc; font-size: 0.8em; }
+        ul { padding-left: 20px; }
     </style>
 </head>
 <body>
 
 <header>
     <a href="#" class="logo">DailyLine Soft</a>
-    <div class="tab-nav">
-        <button id="btn-intro" class="active" onclick="showTab('intro')">About App</button>
-        <button id="btn-privacy" onclick="showTab('privacy')">Privacy Policy</button>
-        <button id="btn-terms" onclick="showTab('terms')">Terms of Use</button>
+    <div class="flag-nav">
+        <button class="flag-btn active" onclick="setLang('ko')">🇰🇷</button>
+        <button class="flag-btn" onclick="setLang('en')">🇺🇸</button>
+        <button class="flag-btn" onclick="setLang('ja')">🇯🇵</button>
+        <button class="flag-btn" onclick="setLang('es')">🇪🇸</button>
+        <button class="flag-btn" onclick="setLang('pt')">🇧🇷</button>
     </div>
-    <div class="lang-nav">
-        Language: 
-        <span onclick="setLang('ko')">KO</span>|<span onclick="setLang('en')">EN</span>|<span onclick="setLang('ja')">JA</span>|<span onclick="setLang('es')">ES</span>|<span onclick="setLang('pt')">PT</span>
+    <div class="tab-nav">
+        <button id="btn-intro" class="active" onclick="showTab('intro')">App Intro</button>
+        <button id="btn-privacy" onclick="showTab('privacy')">Privacy</button>
+        <button id="btn-terms" onclick="showTab('terms')">Terms</button>
     </div>
 </header>
 
@@ -52,102 +52,120 @@
         
         <div id="tab-intro" class="tab-content">
             <section id="intro-ko" class="active">
-                <div class="app-hero">
-                    <h1>DailyLine</h1>
-                    <p>일상의 모든 선을 잇다</p>
-                </div>
-                <h2>당신의 소중한 기록을 위한 공간</h2>
-                <p>DailyLine은 미니멀한 디자인과 파스텔 톤의 감성을 담은 퍼스널 일기 앱입니다. 복잡한 기능은 덜어내고, 오직 당신의 하루와 감정에 집중할 수 있도록 설계되었습니다.</p>
+                <div class="hero"><h1>DailyLine</h1><p>당신의 일상을 선으로 잇다</p></div>
+                <h2>DailyLine 소개</h2>
+                <p>DailyLine은 미니멀한 디자인과 파스텔 톤의 감성을 담은 퍼스널 다이어리 앱입니다. 복잡한 기능 대신, 당신의 하루와 감정에 집중할 수 있는 공간을 제공합니다.</p>
                 <div class="feature-grid">
-                    <div class="feature-item">
-                        <h3>감정 기록</h3>
-                        <p>그날의 기분을 직관적인 아이콘과 함께 기록하세요.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>사진 첨부</h3>
-                        <p>잊고 싶지 않은 순간을 사진으로 남기세요.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>개인정보 보호</h3>
-                        <p>생체 인식 및 암호 잠금으로 기록을 안전하게 보호합니다.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>안전한 백업</h3>
-                        <p>iCloud와 Google Drive를 통한 백업을 지원합니다.</p>
-                    </div>
+                    <div class="feature-box"><h3>감정 기록</h3>직관적인 아이콘으로 하루를 기록하세요.</div>
+                    <div class="feature-box"><h3>카드형 UI</h3>깔끔한 디자인으로 일기를 한눈에 확인하세요.</div>
                 </div>
-                <p style="margin-top:40px; text-align:center;">문의: <a href="mailto:dailylinesoft@gmail.com" style="color:var(--primary-blue)">dailylinesoft@gmail.com</a></p>
+                <p style="margin-top:40px; text-align:center;">문의: <a href="mailto:dailylinesoft@gmail.com" style="color:var(--primary-blue); text-decoration:none;">dailylinesoft@gmail.com</a></p>
             </section>
             <section id="intro-en">
-                <div class="app-hero">
-                    <h1>DailyLine</h1>
-                    <p>Connecting every line of your daily life</p>
-                </div>
-                <h2>A Space for Your Precious Memories</h2>
-                <p>DailyLine is a minimalist diary app with a soft pastel aesthetic. We've removed complexity so you can focus entirely on your day and emotions.</p>
+                <div class="hero"><h1>DailyLine</h1><p>Connecting your daily lines</p></div>
+                <h2>About DailyLine</h2>
+                <p>DailyLine is a minimalist personal diary app with a soft pastel aesthetic. Focus on your emotions and your day in a space designed for reflection.</p>
                 <div class="feature-grid">
-                    <div class="feature-item"><h3>Mood Tracking</h3><p>Record your feelings with intuitive icons.</p></div>
-                    <div class="feature-item"><h3>Photo Sync</h3><p>Keep your moments alive with photos.</p></div>
-                    <div class="feature-item"><h3>Privacy</h3><p>Secure your records with biometric and passcode locks.</p></div>
-                    <div class="feature-item"><h3>Cloud Backup</h3><p>Support for iCloud and Google Drive backup.</p></div>
+                    <div class="feature-box"><h3>Mood Tracking</h3>Log your emotions with ease.</div>
+                    <div class="feature-box"><h3>Clean UI</h3>A beautiful card-style design.</div>
                 </div>
             </section>
-            </div>
+            <section id="intro-ja">
+                <div class="hero"><h1>DailyLine</h1><p>日常を線でつなぐ</p></div>
+                <h2>紹介</h2><p>DailyLineはパステルカラーのミニマルな日記アプリです。日々の感情を大切に記録します。</p>
+            </section>
+            <section id="intro-es">
+                <div class="hero"><h1>DailyLine</h1><p>Conectando tus líneas diarias</p></div>
+                <h2>Sobre la App</h2><p>Una aplicación de diario minimalista con colores pastel para registrar tu vida.</p>
+            </section>
+            <section id="intro-pt">
+                <div class="hero"><h1>DailyLine</h1><p>Conectando suas linhas diárias</p></div>
+                <h2>Sobre o App</h2><p>Um aplicativo de diário pessoal minimalista para registrar suas emoções diárias.</p>
+            </section>
+        </div>
 
         <div id="tab-privacy" class="tab-content" style="display:none">
             <section id="privacy-ko">
                 <h1>개인정보 처리방침 (KO)</h1>
-                <span class="date">시행일자: 2026년 4월 23일</span>
-                (이전에 주신 한국어 개인정보 처리방침 본문을 여기에 넣으세요)
+                <span class="date">시행일자: 2026.04.23</span>
+                DailyLine Soft(이하 '회사')는 사용자의 개인정보를 소중히 여기며, 관련 법령을 준수합니다.
+
+                1. 수집하는 개인정보 항목
+                - 앱 내 작성한 일기 내용, 기분 데이터, 사진 (모두 기기 또는 사용자의 클라우드에 저장)
+                - 서비스 개선을 위한 익명화된 이용 기록 및 기기 정보
+
+                2. 개인정보의 이용 목적
+                - 일기 저장 및 관리 기능 제공
+                - 통계 데이터 및 회고 리포트 생성
+                - 데이터 백업 및 복구 (사용자 선택 시)
+
+                3. 개인정보의 제3자 제공
+                - 회사는 사용자의 데이터를 외부에 판매하거나 제공하지 않습니다.
+
+                4. 데이터의 보관 및 파기
+                - 사용자가 앱을 삭제하거나 데이터를 직접 삭제할 경우 즉시 제거됩니다.
+
+                문의: dailylinesoft@gmail.com
             </section>
             <section id="privacy-en">
                 <h1>Privacy Policy (EN)</h1>
-                <span class="date">Effective: April 23, 2026</span>
-                (English Privacy Policy text)
+                <span class="date">Effective Date: April 23, 2026</span>
+                DailyLine Soft values your privacy.
+
+                1. Data Collection
+                - Journal entries, mood data, and photos.
+                - Anonymous device information for service improvement.
+
+                2. Use of Information
+                - Providing journaling and visualization features.
+                - Backup and recovery via cloud services (optional).
+
+                3. Data Sharing
+                - We do not share or sell your data to third parties.
+
+                4. Data Retention
+                - Data is stored on your device and can be deleted anytime.
             </section>
             <section id="privacy-ja">
                 <h1>プライバシーポリシー (JA)</h1>
-                <span class="date">施行日: 2026年4월 23일</span>
-                (Japanese Privacy Policy text)
+                <span class="date">施行日: 2026年4月23日</span>
+                お客様の日記データは安全に保護され、本人の同意なしに外部へ提供されることはありません。
             </section>
             <section id="privacy-es">
-                <h1>Política de privacidad (ES)</h1>
-                <span class="date">Fecha: 23 de abril de 2026</span>
-                (Spanish Privacy Policy text)
+                <h1>Política de Privacidad (ES)</h1>
+                <span class="date">Vigencia: 23 de abril de 2026</span>
+                Respetamos su privacidad. Sus datos se guardan localmente para su seguridad.
             </section>
             <section id="privacy-pt">
                 <h1>Política de Privacidade (PT)</h1>
                 <span class="date">Vigência: 23 de abril de 2026</span>
-                (Portuguese Privacy Policy text)
+                Valorizamos sua privacidade. Seus dados são armazenados localmente e na nuvem de sua preferência.
             </section>
         </div>
 
         <div id="tab-terms" class="tab-content" style="display:none">
             <section id="terms-ko">
                 <h1>이용약관 (KO)</h1>
-                <span class="date">시행일자: 2026년 4월 23일</span>
-                (한국어 이용약관 본문)
+                <span class="date">시행일자: 2026.04.23</span>
+                제1조(목적) 이 약관은 DailyLine Soft가 제공하는 DailyLine 앱 서비스의 이용 조건 및 절차를 규정합니다.
+
+                제2조(서비스 이용) 사용자는 개인적인 목적으로만 서비스를 이용할 수 있으며, 불법적인 용도로 사용할 수 없습니다.
+
+                제3조(의료 서비스 고지) 본 앱은 정보 제공을 목적으로 하며, 의학적 진단이나 치료를 대신할 수 없습니다.
+
+                제4조(유료 서비스) 앱 내 결제는 각 스토어(Apple/Google)의 결제 정책에 따릅니다.
             </section>
             <section id="terms-en">
                 <h1>Terms of Use (EN)</h1>
-                <span class="date">Effective: April 23, 2026</span>
-                (English Terms of Use text)
+                <span class="date">Effective Date: April 23, 2026</span>
+                1. Service Usage: For personal use only.
+                2. Responsibility: Users are responsible for the content they generate.
+                3. Medical Disclaimer: This app is not a substitute for professional medical advice.
+                4. Payments: In-app purchases are handled by Apple/Google billing systems.
             </section>
-            <section id="terms-ja">
-                <h1>利用規約 (JA)</h1>
-                <span class="date">施行日: 2026年4월 23일</span>
-                (Japanese Terms of Use text)
-            </section>
-            <section id="terms-es">
-                <h1>Términos de uso (ES)</h1>
-                <span class="date">Fecha: 23 de abril de 2026</span>
-                (Spanish Terms of Use text)
-            </section>
-            <section id="terms-pt">
-                <h1>Termos de Uso (PT)</h1>
-                <span class="date">Vigência: 23 de abril de 2026</span>
-                (Portuguese Terms of Use text)
-            </section>
+            <section id="terms-ja"><h1>利用規約 (JA)</h1>本サービスは個人の日記作成のために提供されます。</section>
+            <section id="terms-es"><h1>Términos de Uso (ES)</h1>El usuario es responsable del contenido que genera en la aplicación.</section>
+            <section id="terms-pt"><h1>Termos de Uso (PT)</h1>O serviço é destinado ao uso pessoal de registro diário.</section>
         </div>
 
     </div>
@@ -156,22 +174,31 @@
 <footer>&copy; 2026 DailyLine Soft. All rights reserved.</footer>
 
 <script>
-    let cTab = 'intro', cLang = 'ko';
-    function showTab(t){
-        cTab = t;
-        document.querySelectorAll('.tab-content').forEach(d => d.style.display = 'none');
-        document.getElementById('tab-'+t).style.display = 'block';
+    let currentTab = 'intro', currentLang = 'ko';
+
+    function showTab(tab) {
+        currentTab = tab;
+        document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+        document.getElementById('tab-' + tab).style.display = 'block';
         document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
-        document.getElementById('btn-'+t).classList.add('active');
+        document.getElementById('btn-' + tab).classList.add('active');
         update();
     }
-    function setLang(l){ cLang = l; update(); }
-    function update(){
+
+    function setLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.flag-btn').forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        update();
+    }
+
+    function update() {
         document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-        let target = document.getElementById(`${cTab}-${cLang}`);
-        if(!target) target = document.getElementById(`${cTab}-en`); // 기본값 영어
+        let targetId = `${currentTab}-${currentLang}`;
+        let target = document.getElementById(targetId);
+        if(!target) target = document.getElementById(`${currentTab}-en`);
         if(target) target.classList.add('active');
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }
 </script>
 </body>
